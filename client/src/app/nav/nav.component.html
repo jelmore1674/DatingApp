@@ -49,9 +49,10 @@
 			<a dropdownToggle class="dropdown-toggle text-light"
 				>Welcome {{ user.username | titlecase }}</a
 			>
-			<div href="#" *dropdownMenu class="dropdown-menu mt-3">
-				<a href="#" class="dropdown-item">Profile</a>
-				<a href="#" class="dropdown-item">Settings</a>
+			<div *dropdownMenu class="dropdown-menu mt-3">
+				<a routerLink="/member/edit" class="dropdown-item"
+					>Edit Profile</a
+				>
 				<div class="divider dropdown-divider"></div>
 				<a href="#" class="dropdown-item" (click)="logout()">Logout</a>
 			</div>

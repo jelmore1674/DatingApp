@@ -2,5 +2,10 @@
 	cursor: pointer;
 }
 
-.dropdown-item {
+img {
+	max-height: 50px;
+	border: 2px solid white;
+	border-radius: 50%;
+	display: inline;
+	margin-right: 1rem;
 }

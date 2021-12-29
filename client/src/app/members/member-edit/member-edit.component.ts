@@ -5,6 +5,7 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Member } from 'src/app/_models/member';
 import { take } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 @Component({
 	selector: 'app-member-edit',
@@ -12,7 +13,9 @@ import { ToastrService } from 'ngx-toastr';
 	styleUrls: ['./member-edit.component.css'],
 })
 export class MemberEditComponent implements OnInit {
-	@ViewChild('editForm') editForm: any;
+	@ViewChild('editForm') editForm: NgForm;
+	member: Member;
+	user: User;
 	@HostListener('window:beforeunload', ['$event']) unloadNotification(
 		$event: any
 	) {
@@ -20,8 +23,6 @@ export class MemberEditComponent implements OnInit {
 			$event.returnValue = true;
 		}
 	}
-	member: Member;
-	user: User;
 
 	constructor(
 		private accountService: AccountService,

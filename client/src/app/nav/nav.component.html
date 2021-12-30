@@ -51,7 +51,7 @@
 				alt="{{ user.username }}"
 			/>
 			<a dropdownToggle class="dropdown-toggle text-light"
-				>Welcome {{ user.username | titlecase }}</a
+				>Welcome {{ user.knownAs | titlecase }}</a
 			>
 			<div *dropdownMenu class="dropdown-menu mt-3">
 				<a routerLink="/member/edit" class="dropdown-item"

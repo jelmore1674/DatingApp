@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using API.DTOs;
-using API.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-using API.Services;
-using Microsoft.Extensions.Configuration;
 using API.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
+using API.DTOs;
 using API.Helpers;
+using API.Interfaces;
+using API.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 namespace API.Extensions
 {
@@ -21,9 +21,10 @@ namespace API.Extensions
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<LogUserActivity>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
-            services.AddDbContext<DataContext>(options => 
+            services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(config.GetConnectionString("DefaultConnection"));
             }
@@ -32,7 +33,7 @@ namespace API.Extensions
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
-            
+
             return services;
         }
     }

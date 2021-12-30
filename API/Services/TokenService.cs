@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace API.Services
 {
@@ -24,7 +24,8 @@ namespace API.Services
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
             };
             // generate signing credentials
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

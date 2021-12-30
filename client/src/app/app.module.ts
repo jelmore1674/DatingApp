@@ -25,6 +25,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
 	declarations: [
@@ -43,7 +44,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
 		MemberEditComponent,
 		PhotoEditorComponent,
 		TextInputComponent,
-  DateInputComponent,
+		DateInputComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -54,6 +55,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
 		ReactiveFormsModule,
 		SharedModule,
 		NgxSpinnerModule,
+		PaginationModule,
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
